@@ -18,8 +18,9 @@ Username/Password as below
 
 ### Folder structure
 
+    +---.github // GitHub Workflows
+    |   \--workflows
     +---aws // Contain aws cli script to create prerequisite resources
-    |   +---buildspec
     |   \---json
     +---js // Contain Application code
     +---packer // Contain Packer script use for creating an golden image AMI.
@@ -251,14 +252,12 @@ terraform/config/Backend.conf
     workspace_key_prefix = "TBC"                 // Please replace account id on TBC
     region               = "TBC"
 
-#### Excute Shell Script to create prerequisite resources (e.g., IAM role, S3 bucket for Terraform state and AWS CICD)
+#### Excute Shell Script to create prerequisite resources (e.g., IAM role and S3 bucket for Terraform state)
 
     aws/deploy-aws.sh ${YOUR_AWSPROFILE} ${YOUR_ACCOUNT_ID}
 
 ##### Script will create resources below:
-- Create CodeBuild and IAM role for:
-    - CICD Pipeline for Infra
-    - CICD Pipeline for Code
+- Create CodeBuild and IAM role for CodeBuild GitHubRunner
 - S3 Bucket to keep terrform state file
 
 #### Trigger GitHub action workflows to deploy the code
