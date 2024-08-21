@@ -60,7 +60,7 @@ Create /health for health check on Node Js as below.
   - Link: https://github.com/moleculerjs/moleculer-web
 
 ### NATS configuration
-- Link https://moleculer.services/docs/0.12/transporters.html
+- Link: https://moleculer.services/docs/0.15/networking
 - Leverage password authentication for communication.
 - Credentials is store in SecretManager
 
