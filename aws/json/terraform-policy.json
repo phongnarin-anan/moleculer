@@ -1,0 +1,33 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "iam:*",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:*",
+                "ec2:*",
+                "rds:*",
+                "cloudwatch:*",
+                "logs:*",
+                "sns:*",
+                "sqs:*",
+                "autoscaling:*",
+                "dynamodb:*",
+                "lambda:*",
+                "route53:*",
+                "cloudformation:*",
+                "kms:*",
+                "secretsmanager:*",
+                "elasticloadbalancing:*",
+                "cloudfront:*",
+                "s3:ListAllMyBuckets"
+            ],
+            "Resource": "*"
+        }
+    ]
+}

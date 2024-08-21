@@ -1,0 +1,34 @@
+{
+    "variables": {
+      "aws_region": "ap-southeast-1",
+      "instance_type": "t2.micro",
+      "source_ami": "ami-0a6b545f62129c495",
+      "install_script": "packer/nats/install.sh",
+      "aws_profile": "panan-aws",
+      "security_group_id": "sg-0b6b6be3a1ae37237"
+    },
+    "builders": [
+      {
+        "type": "amazon-ebs",
+        "region": "{{user `aws_region`}}",
+        "instance_type": "{{user `instance_type`}}",
+        "source_ami": "{{user `source_ami`}}",
+        "ssh_username": "ec2-user",
+        "ami_name": "nats-app-{{timestamp}}",
+        "ami_description": "AMI with NATS installed via a custom script.",
+        "associate_public_ip_address": true,
+        "profile": "{{user `aws_profile`}}",
+        "security_group_id": "{{user `security_group_id`}}",
+        "iam_instance_profile": "packer-profile",
+        "spot_price": "auto",
+        "spot_price_auto_product": "Linux/UNIX"
+      }
+    ],
+    "provisioners": [
+      {
+        "type": "shell",
+        "script": "{{user `install_script`}}"
+      }
+    ]
+  }
+  
