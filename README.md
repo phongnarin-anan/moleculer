@@ -27,7 +27,7 @@ Username/Password as below
     |   +---nats
     |   +---nodejs
     |   \---obs
-    +---sh // Contain shell script to which will be execute at EC2 runtime, will push to S3 by CodePipeline
+    +---sh // Contain shell script to which will be execute at EC2 runtime, will push to S3 by GitHub WorkFlows
     \---terraform // Contain terraform to create/manage infrastucture
         +---code // module
         |   +---module
@@ -263,7 +263,7 @@ terraform/config/Backend.conf
 #### Trigger GitHub action workflows to deploy the code
 - Note:
     - Terraform CICD will create an Infrastructure base on Terraform code inside /terraform folder
-    - S3 CICD will push js and sh script to s3 install-artifact every git commit or trigger the codepipeline.
+    - S3 CICD will push js and sh script to s3 install-artifact every git commit or trigger the GitHub WorkFlows.
     - /JS and /SH Script will be downloaded and execute at EC2 startup time.
 
 ## Documentations
