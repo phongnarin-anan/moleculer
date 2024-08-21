@@ -1,4 +1,4 @@
-name: Moleculer AWS CodeBuild
+name: Moleculer Terraform AWS CodeBulid
 
 on:
   push:
