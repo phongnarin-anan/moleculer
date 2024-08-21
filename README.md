@@ -119,7 +119,7 @@ Username/Password as below
 
 #### Prometheus for metrics
 
-Leverage IAM role for service disovery.
+Leverage IAM role for service discovery.
 
     global:
     scrape_interval: 15s
@@ -219,7 +219,7 @@ Script:
 - Create NATSAuth on SecretManager
     - Please make sure you have the private cert in hand.
     - Update username and password on aws/json/nats-secrets.json
-    - Please make sure to change --profile name.
+    - Please make sure to change --profile "${YOUR_AWSPROFILE}".
 
  Command:
 
