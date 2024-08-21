@@ -39,8 +39,8 @@ jobs:
               build:
                 commands:
                   - echo "Copying files to S3"
-                  - aws s3 cp js/ s3://install-artifact/js/ --recursive
-                  - aws s3 cp sh/ s3://install-artifact/sh/ --recursive
+                  - aws s3 cp js/ s3://${{ env.S3_BUCKET }}/js/ --recursive
+                  - aws s3 cp sh/ s3://${{ env.S3_BUCKET }}/sh/ --recursive
             artifacts:
               files:
                 - '**/*'
