@@ -37,8 +37,7 @@ jobs:
                 commands:
                   - echo "Installing Terraform"
                   - curl -LO "https://releases.hashicorp.com/terraform/${{ vars.TF_VERSION }}/terraform_${{ vars.TF_VERSION }}_linux_amd64.zip"
-                  - unzip -o terraform_${{ vars.TF_VERSION }}_linux_amd64.zip
-                  - mv terraform /usr/local/bin/
+                  - unzip -o terraform_${{ vars.TF_VERSION }}_linux_amd64.zip -d /usr/local/bin/
               pre_build:
                 commands:
                   - cd terraform/code/${{ vars.ENVIRONMENT }}
