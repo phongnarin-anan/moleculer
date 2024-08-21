@@ -26,7 +26,7 @@ jobs:
           role-to-assume: arn:aws:iam::${{ vars.ACCOUNT_ID }}:role/GitHubActionsRole
           aws-region: ${{ vars.REGION }}
 
-      - name: Trigger AWS CodeBuild and Run Terraform
+      - name: Trigger AWS CodeBuild and Upload files to S3
         uses: aws-actions/aws-codebuild-run-build@v1
         with:
           project-name: GitHubActionsRunnerMoleculerProject
@@ -35,7 +35,7 @@ jobs:
             phases:
               install:
                 commands:
-                  - echo "Installing dependencies, if any"
+                  - echo "Installing dependencies"
               build:
                 commands:
                   - echo "Copying files to S3"
