@@ -23,8 +23,8 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           audience: sts.amazonaws.com
-          role-to-assume: arn:aws:iam::${{ env.ACCOUNT_ID }}:role/GitHubActionsRole
-          aws-region: ${{ env.REGION }}
+          role-to-assume: arn:aws:iam::${{ vars.ACCOUNT_ID }}:role/GitHubActionsRole
+          aws-region: ${{ vars.REGION }}
 
       - name: Trigger AWS CodeBuild and Run Terraform
         uses: aws-actions/aws-codebuild-run-build@v1
@@ -39,8 +39,8 @@ jobs:
               build:
                 commands:
                   - echo "Copying files to S3"
-                  - aws s3 cp js/ s3://${{ env.S3_BUCKET }}/js/ --recursive
-                  - aws s3 cp sh/ s3://${{ env.S3_BUCKET }}/sh/ --recursive
+                  - aws s3 cp js/ s3://${{ vars.S3_BUCKET }}/js/ --recursive
+                  - aws s3 cp sh/ s3://${{ vars.S3_BUCKET }}/sh/ --recursive
             artifacts:
               files:
                 - '**/*'

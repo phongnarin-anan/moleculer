@@ -23,8 +23,8 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           audience: sts.amazonaws.com
-          role-to-assume: arn:aws:iam::${{ env.ACCOUNT_ID }}:role/GitHubActionsRole
-          aws-region: ${{ env.REGION }}
+          role-to-assume: arn:aws:iam::${{ vars.ACCOUNT_ID }}:role/GitHubActionsRole
+          aws-region: ${{ vars.REGION }}
 
       - name: Trigger AWS CodeBuild and Run Terraform
         uses: aws-actions/aws-codebuild-run-build@v1
@@ -36,12 +36,12 @@ jobs:
               install:
                 commands:
                   - echo "Installing Terraform"
-                  - curl -LO "https://releases.hashicorp.com/terraform/${{ env.TF_VERSION }}/terraform_${{ env.TF_VERSION }}_linux_amd64.zip"
-                  - unzip terraform_${{ env.TF_VERSION }}_linux_amd64.zip
+                  - curl -LO "https://releases.hashicorp.com/terraform/${{ vars.TF_VERSION }}/terraform_${{ vars.TF_VERSION }}_linux_amd64.zip"
+                  - unzip terraform_${{ vars.TF_VERSION }}_linux_amd64.zip
                   - mv terraform /usr/local/bin/
               pre_build:
                 commands:
-                  - cd terraform/code/${{ env.ENVIRONMENT }}
+                  - cd terraform/code/${{ vars.ENVIRONMENT }}
                   - echo "Initializing Terraform"
                   - terraform init -reconfigure -backend-config=../../config/Backend.conf
               build:
