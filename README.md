@@ -193,7 +193,7 @@ Make sure you have configured the AWS Credential in the local workstation.
 
 Update profile name on line 7 of template.json (all 3 files) under /packer folder
 
-    "aws_profile": "panan-aws"
+    "aws_profile": "${YOUR_AWSPROFILE}"
 
 1. Builder NodeJS golden image with Packer
 
@@ -224,7 +224,7 @@ Script:
  Command:
 
     aws secretsmanager create-secret \
-    --profile "panan-aws" \
+    --profile "${YOUR_AWSPROFILE}" \
     --name NATSAuthSecret \
     --description "Secret for NATS authentication" \
     --secret-string '{
